@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escala de Motoristas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+  <header class="bg-slate-950 text-white shadow-md border-b border-slate-800">
+  <div class="max-w-7xl mx-auto px-4 py-4 sm:py-6 flex flex-row items-center justify-between gap-2">
+    <div>
+      <h1 class="text-xl sm:text-2xl font-bold tracking-tight text-white">Escala de Motoristas</h1>
+      <p class="text-[11px] sm:text-xs text-slate-400 mt-0.5">Sistema de Despacho & Agendamento</p>
+    </div>
+    <div id="data-atual" class="text-xs sm:text-sm font-medium text-slate-300 whitespace-nowrap">
+    </div>
+  </div>
+</header>
+
+<!-- Container Principal -->
+<main class="max-w-7xl mx-auto px-4 py-6 sm:py-8 space-y-6">
+
+  <!-- Faixa de Ações / Controles -->
+  <section class="bg-white p-4 sm:p-6 rounded-xl shadow-sm border border-slate-200 flex flex-row items-center justify-between gap-3">
+    <div>
+      <h2 class="text-base sm:text-lg font-semibold text-slate-900">Painel de Agendamento</h2>
+    </div>
+
+    <!-- Botão Principal (Alvinegro e Compacto no Mobile) -->
+    <button id="btnGerarEscala" class="flex items-center justify-center gap-2 bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+  </svg>
+  <span>Gerar Escala do Dia</span>
+</button>
+  </section>
+
+  <!-- Área do Grid da Escala (8 Colunas) -->
+  <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+    <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+      <h3 class="font-medium text-slate-700">
+        Distribuição por Motorista <span id="dataEscalaHoje" class="text-xs font-normal text-slate-500 font-mono"></span>
+      </h3>
+      <span id="total-corridas" class="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full">
+        0 corridas alocadas
+      </span>
+    </div>
+
+    <!-- Container das 8 Colunas (O JS vai preencher dinamicamente aqui) -->
+    <div id="grid-escala" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
+      <!-- As colunas dos 8 motoristas e suas linhas de viagens entrarão aqui via JS -->
+    </div>
+  </section>
+
+  <section class="bg-slate-100 p-6 rounded-xl border border-slate-300 opacity-90">
+  <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-300">
+    <div class="flex items-center gap-2">
+      <span class="w-2.5 h-2.5 rounded-full bg-slate-400"></span>
+      <h3 class="font-medium text-slate-700">
+        Escala do Dia Anterior <span id="dataHistorico" class="text-xs font-normal text-slate-500 font-mono"></span>
+      </h3>
+    </div>
+    <span id="total-corridas-ontem" class="text-xs font-semibold px-2.5 py-1 bg-slate-200 text-slate-600 rounded-full">
+      Nenhum histórico carregado
+    </span>
+  </div>
+
+  <div id="grid-escala-ontem" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-3">
+    <!-- O JS vai carregar a escala salva de ontem aqui -->
+  </div>
+</section>
+
+</main>
+
+  <script src="dados.js"></script>
+  <script src="app.js"></script>
+  
+</body>
+</html>
