@@ -23,19 +23,32 @@
 <main class="max-w-7xl mx-auto px-4 py-6 sm:py-8 space-y-6">
 
   <!-- Faixa de Ações / Controles -->
-  <section class="bg-white p-4 sm:p-6 rounded-xl shadow-sm border border-slate-200 flex flex-row items-center justify-between gap-3">
-    <div>
-      <h2 class="text-base sm:text-lg font-semibold text-slate-900">Painel de Agendamento</h2>
-    </div>
+<section class="bg-white p-4 sm:p-6 rounded-xl shadow-sm border border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-4">
+  
+  <!-- Título e Subtítulo -->
+  <div class="flex-shrink-0">
+    <h2 class="text-base sm:text-lg font-semibold text-slate-900">Painel de Agendamento</h2>
+  </div>
 
-    <!-- Botão Principal (Alvinegro e Compacto no Mobile) -->
-    <button id="btnGerarEscala" class="flex items-center justify-center gap-2 bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-  </svg>
-  <span>Gerar Escala do Dia</span>
-</button>
-  </section>
+  <!-- Textarea do Meio (Com rolagem automática e altura compacta) -->
+  <div class="flex-1 max-w-md w-full">
+    <textarea 
+      id="inputListas" 
+      rows="3"
+      placeholder="Cole a lista de passageiros do dia aqui (um por linha)..." 
+      class="w-full text-xs sm:text-sm p-2.5 bg-slate-50 border border-slate-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none resize-none transition-all"
+    ></textarea>
+  </div>
+
+  <!-- Botão Principal -->
+  <button id="btnGerarEscala" class="flex-shrink-0 flex items-center justify-center gap-2 bg-indigo-600 text-white font-medium py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+    </svg>
+    <span>Gerar Escala do Dia</span>
+  </button>
+
+</section>
 
   <!-- Área do Grid da Escala (8 Colunas) -->
   <section class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">

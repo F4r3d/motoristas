@@ -10,7 +10,10 @@
 
 // Tenta pegar dados atualizados do localStorage; se não houver, usa o DADOS_SISTEMA do dados.js
 let motoristas = JSON.parse(localStorage.getItem('escala_motoristas')) || DADOS_SISTEMA.motoristas;
-let passageiros = JSON.parse(localStorage.getItem('escala_passageiros')) || DADOS_SISTEMA.passageiros;
+// let passageiros = JSON.parse(localStorage.getItem('escala_passageiros')) || DADOS_SISTEMA.passageiros;
+let passageiros = [];
+
+
 
 // Carrega o histórico da última escala salva (para aplicar a regra de não repetição)
 let historicoOntem = JSON.parse(localStorage.getItem('escala_ontem')) || [];
@@ -19,6 +22,8 @@ let historicoOntem = JSON.parse(localStorage.getItem('escala_ontem')) || [];
 const btnGerarEscala = document.getElementById('btnGerarEscala');
 const gridEscala = document.getElementById('grid-escala');
 const totalCorridasSpan = document.getElementById('total-corridas');
+
+
 
 // ============================================================================
 // 2. FUNÇÕES AUXILIARES DE LÓGICA E EMBARALHAMENTO
@@ -182,6 +187,11 @@ function salvarEscalaNoHistorico(escala) {
 // ============================================================================
 
 btnGerarEscala.addEventListener('click', () => {
+
+passageiros = document.getElementById('inputListas').value
+  .split(/\r?\n/)
+  .map(n => n.trim())
+  .filter(Boolean);
 
   // 3. Gera a escala de HOJE (e ela própria atualiza a grid de cima e guarda o novo histórico)
   gerarEscala();
